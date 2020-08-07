@@ -1,11 +1,17 @@
-# Mainnet send directly `basex.eth` multisig
-
-
 # Assurance Contract
 
 Medium introduction: https://medium.com/@basexisland/assurance-contract-772fb7eb0b58
 
 Fork The World is 100% aligned with the vision of the BaseX
+
+![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)
+
+# Mainnent `basex.eth`
+
+
+
+
+
 
 
 
@@ -15,9 +21,6 @@ Fork The World is 100% aligned with the vision of the BaseX
 * Assurance: https://ropsten.etherscan.io/address/0xb95db35782ab5ee844a1faa5d5a542a88d832aff#code
 
 * BSXO: https://ropsten.etherscan.io/address/0x7976cf3cf40bb728d6e873aefcdf32002e6dd618
-
-
-
 
 
 
@@ -40,17 +43,18 @@ Weekly submission to Twitter / Discord / GitHub / internet archive / newsletter
 
 
 
+# Development
+
 ### Getting code
 
-git clone git@github.com:basexisland/assurance-contract.git
-npm install
+`git clone git@github.com:basexisland/assurance-contract.git`
+`npm install`
 
-npm install @openzeppelin/contracts --save
-npm install @chainlink/contracts --save
+Packages from scratch:
+* `npm install @openzeppelin/contracts --save`
+* `npm install @chainlink/contracts --save`
 
 Using [`ERC20PresetMinterPauser`](https://docs.openzeppelin.com/contracts/3.x/api/presets)
-
-
 
 
 ### Deploying via Remix
@@ -65,13 +69,14 @@ Deploy to Ropsten
 
 > "Multiple SPDX license identifiers found in source file."
 
+Just remove globally that line
+
 Deploy to Ropsten while passing constructor parameters:
 - token 
 - chainlink oracle: https://docs.chain.link/docs/reference-contracts on Ropsten `ETH/USD` is `0x8468b2bDCE073A157E560AA4D9CcF6dB1DB98507`
 - beneficiary address
 
-
-`web3.sha3("MINTER_ROLE")` (web3 0.20)
+After deploying, set the `web3.sha3("MINTER_ROLE")`
 
 web3.utils.keccak256("MINTER_ROLE") (https://web3js.readthedocs.io/en/v1.2.7/web3-utils.html)
 
@@ -115,5 +120,3 @@ Skilled and able developer.
 Coding skills are going towards marketing automation 
 
 Passionate about adoption, usability, user experience.
-
-
