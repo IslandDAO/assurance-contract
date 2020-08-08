@@ -1,3 +1,10 @@
+# Background introduction
+
+Design principles and feature set: https://medium.com/@basexisland/assurance-contract-772fb7eb0b58
+
+> We are buying the island but how to incentivize early investors? 
+> Aligning game theory and crypto incentives.
+
 ![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/war-games.gif)
 
 # Changing the game
@@ -11,8 +18,6 @@
 Wikipedia definition: https://en.wikipedia.org/wiki/Assurance_contract
 
 > An assurance contract, also known as a provision point mechanism, or crowdaction, is a game theoretic mechanism and a financial technology that facilitates the voluntary creation of public goods and club goods in the face of collective action problems such as the free rider problem.
-
-Medium introduction about the design principles and feature set: https://medium.com/@basexisland/assurance-contract-772fb7eb0b58
 
 Not that short pitch `6m56s`: https://www.youtube.com/watch?v=7lO6uYdzun4
 
@@ -106,6 +111,7 @@ See also list of [issues](https://github.com/basexisland/assurance-contract/issu
 Yes please!
 
 > A Great DAO tool $1000
+
 > That useful thing for DAOs you’ve been thinking about, or at least an MVP of it. $1000 & a chance at further funding.
 
 ## Use cases
