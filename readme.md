@@ -114,7 +114,7 @@ Yes please!
 * Something in Liberland
 * Seastading Institute: https://www.seasteading.org/active-projects/
 
-Personal note: `meta network`. I do not have enough money to put `$10k` into each of the projects but I can put `$10k` into `meta-network`, knowing that regardless of the actual location I'll move there in full confidence.
+Personal note: `meta network`. I do not have enough money to put `$10k` into each of the projects but I can put `$10k` into `meta network`, knowing that regardless of the actual location I'll move there in full confidence.
 
 ![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/sez.gif)
 
@@ -122,7 +122,7 @@ For the purpose of jurisdiction, we always assume 0% as a baseline: https://sez.
 
 ## Paradigm shift 
 
-Related project: E-Estonia Voluntary Tax P2P Personal Tokens UBI Blockchain DAO - here we are change game theory too, your feedback is greatly appreciated. [Google Doc](https://docs.google.com/document/d/1AR4npthWvszwFqXmwJ1QMvgAu4hgyquThzphOk0kVfY/edit?usp=sharing)
+Related project: `E-Estonia Voluntary Tax P2P Personal Tokens UBI Blockchain DAO` - here we are change game theory too, your feedback is greatly appreciated. [Google Doc](https://docs.google.com/document/d/1AR4npthWvszwFqXmwJ1QMvgAu4hgyquThzphOk0kVfY/edit?usp=sharing) develope during another hack: https://estoniadao.org/hack
 
 **From:** *“taxation is a theft”* 
 
