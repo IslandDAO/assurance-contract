@@ -1,18 +1,16 @@
-# Assurance Contract
+# New Fork Order aka "Assurance Contract"
 
 Medium introduction: https://medium.com/@basexisland/assurance-contract-772fb7eb0b58
 
 Fork The World is 100% aligned with the vision of the BaseX
 
-![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)
+Quick pitch: https://www.youtube.com/watch?v=7lO6uYdzun4
 
-# Mainnent `basex.eth`
+(https://www.youtube.com/watch?v=7lO6uYdzun4)[![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)]
 
+# `basex.eth`
 
-
-
-
-
+For the time being, the real funds are deployed Gnosis Multisig and calculations happen in Google Docs.
 
 
 # Testnet Only
@@ -20,7 +18,7 @@ Fork The World is 100% aligned with the vision of the BaseX
 
 * Assurance: https://ropsten.etherscan.io/address/0xb95db35782ab5ee844a1faa5d5a542a88d832aff#code
 
-* BSXO: https://ropsten.etherscan.io/address/0x7976cf3cf40bb728d6e873aefcdf32002e6dd618
+* BSXO (BaseX Operations) token: https://ropsten.etherscan.io/address/0x7976cf3cf40bb728d6e873aefcdf32002e6dd618
 
 
 
