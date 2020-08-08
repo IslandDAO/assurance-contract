@@ -8,6 +8,12 @@ Not that short pitch `6m56s`: https://www.youtube.com/watch?v=7lO6uYdzun4
 
 [![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)](ttps://www.youtube.com/watch?v=7lO6uYdzun4)
 
+
+![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-chainlink-meme.gif)
+
+![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-superrare-meme.gif)
+
+
 # `basex.eth`
 
 For the time being, the real funds are deployed Gnosis Multisig and calculations happen in Google Docs.
