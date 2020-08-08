@@ -19,11 +19,15 @@ Not that short pitch `6m56s`: https://www.youtube.com/watch?v=7lO6uYdzun4
 [![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)](https://www.youtube.com/watch?v=7lO6uYdzun4)
 
 
-# `basex.eth`
+# `basex.eth` 💰💰💰
 
-For the time being, the real funds are deployed to the `basex.eth` Gnosis Multisig and calculations happen manually in Google Docs. This is not the Amazon-traffic web site, we can totally handle 2 people who have already committed `$10k` each. You are also invited to participate in the crowdfunding.
+For the time being, the real funds are deployed to the `basex.eth` Gnosis Multisig and calculations happen manually in Google Docs. 
+
+This is not the Amazon-traffic web site, we can totally handle 2 people who have already committed `$10k` each. 
 
 Weekly submission of screenshots to  Twitter / Discord / GitHub / internet archive / newsletter. That is a sufficient level decentralized centralization.
+
+More info about our fundraising progress: https://basexisland.com/bank
 
 [![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-chainlink-meme.gif)](https://superrare.co/artwork-v2/genes1s-12464)
 
@@ -44,7 +48,6 @@ Spending a small fortune to develop solidity code is not a priority now, pull re
 Every other week there is a notable DeFi hack: https://defiweekly.substack.com/p/insurance-mining-opyn-musings
 
 > The going price for an audit at the moment is anywhere between $30k-$75k USD. 
-
 
 # Development
 
