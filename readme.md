@@ -36,6 +36,8 @@ More info about our fundraising progress: https://basexisland.com/bank
 
 [![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-chainlink-meme.gif)](https://superrare.co/artwork-v2/genes1s-12464)
 
+Art by [@ElohProjects](http://twitter.com/elohprojects): https://superrare.co/artwork-v2/genes1s-12464
+
 
 # Testnet
 
@@ -146,3 +148,5 @@ After the conference and due-dilligence trip we will have more information how t
 Network of special economic zones, new model of the global government, new unified law, new operating system for humanity.
 
 [![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-superrare-meme.gif)](https://superrare.co/artwork-v2/2hunnetpercent-12639)
+
+Art by [@ElohProjects](http://twitter.com/elohprojects): https://superrare.co/artwork-v2/2hunnetpercent-12639
