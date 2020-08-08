@@ -1,3 +1,10 @@
+# Changing the game theory.
+
+**OLD STUFF**: *"not ready now, keep me in the loop, let's touch base in a couple of months"*
+
+**NEW FORK ORDER**: it pays off to be early
+
+
 # New Fork Order aka "Assurance Contract"
 
 Medium introduction: https://medium.com/@basexisland/assurance-contract-772fb7eb0b58
@@ -7,11 +14,6 @@ Fork The World is 100% aligned with the vision of the BaseX
 Not that short pitch `6m56s`: https://www.youtube.com/watch?v=7lO6uYdzun4
 
 [![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)](ttps://www.youtube.com/watch?v=7lO6uYdzun4)
-
-
-![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-chainlink-meme.gif)
-
-![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-superrare-meme.gif)
 
 
 # `basex.eth`
@@ -36,11 +38,10 @@ Spending small fortune to develop solidity code.
 
 https://defiweekly.substack.com/p/insurance-mining-opyn-musings
 
-
 > The going price for an audit at the moment is anywhere between $30k-$75k USD. 
 
 
-### Easier in Google Docs
+## Easier in Google Docs
 Jurisdiction of Google Docs
 
 Weekly submission to Twitter / Discord / GitHub / internet archive / newsletter 
@@ -49,7 +50,7 @@ Weekly submission to Twitter / Discord / GitHub / internet archive / newsletter
 
 # Development
 
-### Getting code
+## Getting code
 
 `git clone git@github.com:basexisland/assurance-contract.git`
 `npm install`
@@ -85,8 +86,6 @@ After deploying, set the `web3.sha3("MINTER_ROLE")`
 web3.utils.keccak256("MINTER_ROLE") (https://web3js.readthedocs.io/en/v1.2.7/web3-utils.html)
 
 
-
-
 ### Running tests
 ```
     ✓ Can calculate money invested in ETH (141ms)
@@ -97,47 +96,32 @@ web3.utils.keccak256("MINTER_ROLE") (https://web3js.readthedocs.io/en/v1.2.7/web
     ✓ Can generate when guys send ETH and USD, initially at 100% APR and then 20% APR only, total mix and match (414ms)
 ```
 
-### Known limitations
-
-So many to list, total proof of concept, experiment.
-
-Limit the number of USD / ETH otheriwse run out of gas
-
-No withdrawing Widrawing, keep track of the array
+See also list of [issues](https://github.com/basexisland/assurance-contract/issues), TLDR: very early days, loads of known issues.
 
 
-You put $10k worth of EHT
+## Prizes
 
-Interest accounted from principal
-
-Did not implement the floor - absolutely willing to do it
-
-The way how rounding is done, if your contribution is less than `$0.01` then it sends `$0.00` worth of `$BSXO`
-
-
-
-# Prizes
-
+Yes please:
 > A Great DAO tool $1000
 > That useful thing for DAOs you’ve been thinking about, or at least an MVP of it. $1000 & a chance at further funding.
 
 ## Use cases
 
-College 1: https://twitter.com/lay2000lbs/status/1282488258535055360
-College 2: https://www.codwell.org/
+* BaseX island
+* College 1: https://twitter.com/lay2000lbs/status/1282488258535055360
+* College 2: https://www.codwell.org/
+* Special Economic Zone near Baikonur Cosmodrome in Kazakhstan 
+* Something in Liberland
+* Seastading Institute: https://www.seasteading.org/active-projects/
 
-Special Economic Zone 
+Personal note: `meta network`. I do not have enough money to put `$10k` into each of the projects but I can put `$10k` into `meta-network`, knowing that regardless of the actual location I'll move there in full confidence.
 
+## Next steps
 
-### Next steps: operating system for humanity and earning personal income
+Currently 100% focus on the BaseX: https://basexisland.com/trip
 
-If Latitude59 and BaseX will not show a major progress, MArs will finetune my strategy.
+After the conference and due-dilligence trip we will have more information how to progress further...
 
-Less real-estate, island, houses, more new model of government, new incentives, new operating system for humanity:
+Network of special economic zones, new model of the government, new unified law, new operating system for humanity:
 
-Skilled and able developer.
-
-Coding skills are going towards marketing automation 
-
-Passionate about adoption, usability, user experience.
-
+![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-superrare-meme.gif)
