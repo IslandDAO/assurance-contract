@@ -1,51 +1,52 @@
-# Changing the game theory.
+![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/war-games.gif)
 
-**OLD STUFF**: *"not ready now, keep me in the loop, let's touch base in a couple of months"*
+# Changing the game .
 
-**NEW FORK ORDER**: it pays off to be early
+**Old game**: *"not ready now, keep me in the loop, let's touch base in a couple of months"*
+
+**New Fork Order**: it pays off to be early
 
 
-# New Fork Order aka "Assurance Contract"
+### New Fork Order aka "Assurance Contract"
 
 Medium introduction: https://medium.com/@basexisland/assurance-contract-772fb7eb0b58
 
-Fork The World is 100% aligned with the vision of the BaseX
+Wikipedia definition: https://en.wikipedia.org/wiki/Assurance_contract
+
+> An assurance contract, also known as a provision point mechanism, or crowdaction, is a game theoretic mechanism and a financial technology that facilitates the voluntary creation of public goods and club goods in the face of collective action problems such as the free rider problem.
 
 Not that short pitch `6m56s`: https://www.youtube.com/watch?v=7lO6uYdzun4
 
-[![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)](ttps://www.youtube.com/watch?v=7lO6uYdzun4)
+[![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)](https://www.youtube.com/watch?v=7lO6uYdzun4)
 
 
 # `basex.eth`
 
 For the time being, the real funds are deployed Gnosis Multisig and calculations happen in Google Docs.
 
+## Jurisdiction easier in Google Docs
+
+Weekly submission of screenshots to  Twitter / Discord / GitHub / internet archive / newsletter. That is a sufficient level decentralized centralization.
+
+[![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-chainlink-meme.gif)](https://superrare.co/artwork-v2/genes1s-12464)
+
 
 # Testnet Only
 
+* Assurance Contract: https://ropsten.etherscan.io/address/0xb95db35782ab5ee844a1faa5d5a542a88d832aff#code
 
-* Assurance: https://ropsten.etherscan.io/address/0xb95db35782ab5ee844a1faa5d5a542a88d832aff#code
-
-* BSXO (BaseX Operations) token: https://ropsten.etherscan.io/address/0x7976cf3cf40bb728d6e873aefcdf32002e6dd618
-
+* $BSXO (BaseX Operations) token: https://ropsten.etherscan.io/address/0x7976cf3cf40bb728d6e873aefcdf32002e6dd618
 
 
 ### Totally not audited
 
 Getting hacked / exploited sucks.
 
-Spending small fortune to develop solidity code.
+Spending a small fortune to develop solidity code is not a priority now, pull request welcome, our resources are dedicated to shilling.
 
-https://defiweekly.substack.com/p/insurance-mining-opyn-musings
+Every other week there is a notable DeFi hack: https://defiweekly.substack.com/p/insurance-mining-opyn-musings
 
 > The going price for an audit at the moment is anywhere between $30k-$75k USD. 
-
-
-## Easier in Google Docs
-Jurisdiction of Google Docs
-
-Weekly submission to Twitter / Discord / GitHub / internet archive / newsletter 
-
 
 
 # Development
@@ -61,8 +62,7 @@ Packages from scratch:
 
 Using [`ERC20PresetMinterPauser`](https://docs.openzeppelin.com/contracts/3.x/api/presets)
 
-
-### Deploying via Remix
+## Deploying via Remix
 
 Need to have [`solidity-flattener`](https://github.com/poanetwork/solidity-flattener) installed
 
@@ -74,7 +74,7 @@ Deploy to Ropsten
 
 > "Multiple SPDX license identifiers found in source file."
 
-Just remove globally that line
+Just remove globally that line from the concatenated file.
 
 Deploy to Ropsten while passing constructor parameters:
 - token 
@@ -83,10 +83,12 @@ Deploy to Ropsten while passing constructor parameters:
 
 After deploying, set the `web3.sha3("MINTER_ROLE")`
 
-web3.utils.keccak256("MINTER_ROLE") (https://web3js.readthedocs.io/en/v1.2.7/web3-utils.html)
-
+`web3.utils.keccak256("MINTER_ROLE")` https://web3js.readthedocs.io/en/v1.2.7/web3-utils.html
 
 ### Running tests
+
+`truffle test`
+
 ```
     ✓ Can calculate money invested in ETH (141ms)
     ✓ Can calculate money invested in USD (265ms)
@@ -110,11 +112,22 @@ Yes please:
 * BaseX island
 * College 1: https://twitter.com/lay2000lbs/status/1282488258535055360
 * College 2: https://www.codwell.org/
-* Special Economic Zone near Baikonur Cosmodrome in Kazakhstan 
+* Special Economic Zone near Baikonur Cosmodrome in Kazakhstan, it's easier than you think, you can literally connect with guys from **Ministry of Digital Development, Innovation and Aerospace Industry** on [LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%22Ministry%20of%20Digital%20Development%2C%20Innovation%20and%20Aerospace%20Industry%22)
 * Something in Liberland
 * Seastading Institute: https://www.seasteading.org/active-projects/
 
 Personal note: `meta network`. I do not have enough money to put `$10k` into each of the projects but I can put `$10k` into `meta-network`, knowing that regardless of the actual location I'll move there in full confidence.
+
+
+![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/sez.gif)
+
+## Paradigm shift 
+
+Related project: E-Estonia Voluntary Tax P2P Personal Tokens UBI Blockchain DAO - here we are change game theory too, your feedback is greatly appreciated. [Google Doc](https://docs.google.com/document/d/1AR4npthWvszwFqXmwJ1QMvgAu4hgyquThzphOk0kVfY/edit?usp=sharing)
+
+From: “taxation is a theft” 
+
+To:  “monthly subscription for governance services”
 
 ## Next steps
 
@@ -122,6 +135,6 @@ Currently 100% focus on the BaseX: https://basexisland.com/trip
 
 After the conference and due-dilligence trip we will have more information how to progress further...
 
-Network of special economic zones, new model of the government, new unified law, new operating system for humanity:
+Network of special economic zones, new model of the global government, new unified law, new operating system for humanity.
 
-![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-superrare-meme.gif)
+[![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/eloh-projects-superrare-meme.gif)](https://superrare.co/artwork-v2/2hunnetpercent-12639)
