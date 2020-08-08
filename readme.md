@@ -4,9 +4,9 @@ Medium introduction: https://medium.com/@basexisland/assurance-contract-772fb7eb
 
 Fork The World is 100% aligned with the vision of the BaseX
 
-Quick pitch: https://www.youtube.com/watch?v=7lO6uYdzun4
+Not that short pitch `6m56s`: https://www.youtube.com/watch?v=7lO6uYdzun4
 
-(https://www.youtube.com/watch?v=7lO6uYdzun4)[![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)]
+[![](https://raw.githubusercontent.com/basexisland/assurance-contract/master/new-fork-order.jpeg)](ttps://www.youtube.com/watch?v=7lO6uYdzun4)
 
 # `basex.eth`
 
@@ -109,9 +109,23 @@ Did not implement the floor - absolutely willing to do it
 The way how rounding is done, if your contribution is less than `$0.01` then it sends `$0.00` worth of `$BSXO`
 
 
-### Next steps: operating system for humanity and rarning income
 
-If Latitude59 and BaseX will not show a major progress, I will finetune my strategy.
+# Prizes
+
+> A Great DAO tool $1000
+> That useful thing for DAOs you’ve been thinking about, or at least an MVP of it. $1000 & a chance at further funding.
+
+## Use cases
+
+College 1: https://twitter.com/lay2000lbs/status/1282488258535055360
+College 2: https://www.codwell.org/
+
+Special Economic Zone 
+
+
+### Next steps: operating system for humanity and earning personal income
+
+If Latitude59 and BaseX will not show a major progress, MArs will finetune my strategy.
 
 Less real-estate, island, houses, more new model of government, new incentives, new operating system for humanity:
 
