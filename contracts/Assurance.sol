@@ -26,12 +26,9 @@ contract Assurance is Ownable {
     function investorsUSDCount() public view returns(uint) {
         return investorsUSDarr.length;
     }
-
-    event consoleLog(uint number);
-    event consoleLog(int256 number);
     
-    constructor(address oracleAddress, address BSXOaddress, address payable beneficiary) public {
-        beneficiary = beneficiary;
+    constructor(address oracleAddress, address BSXOaddress, address payable _beneficiary) public {
+        beneficiary = _beneficiary;
         BSXO = ERC20PresetMinterPauser(BSXOaddress);
         oracle = AggregatorInterface(oracleAddress);
         lastTimeInterest = now;
@@ -44,10 +41,6 @@ contract Assurance is Ownable {
         uint timeSinceTheLastTime = now - lastTimeInterest;
         uint baseInterestRate = currentValue() > 10000000 ? 2000 : 10000; // More than $100k, the interest rate is 20%, below is 100%
 
-        consoleLog(now);
-        consoleLog(lastTimeInterest);
-        consoleLog(timeSinceTheLastTime);
-        consoleLog(baseInterestRate);
 
         uint arrayLength = investorsWEIarr.length;
         for (uint i=0; i<arrayLength; i++) {
@@ -55,7 +48,6 @@ contract Assurance is Ownable {
             uint principalUSDvalue = getUSDValueOfWEI(investorsWEImap[investorAddress]);
 
             uint interestBSXO = principalUSDvalue.mul(timeSinceTheLastTime).div(365 days).mul(baseInterestRate).div(10000); // here we have dollar value
-            consoleLog(interestBSXO);
 
             uint BSXODecimals = interestBSXO.mul(10000000000000000); // here we have the the value with accurate number of decimals
             BSXO.mint(investorAddress, BSXODecimals);
@@ -67,7 +59,6 @@ contract Assurance is Ownable {
             uint principalUSDvalue = investorsUSDmap[investorAddress];
 
             uint interestBSXO = principalUSDvalue.mul(timeSinceTheLastTime).div(365 days).mul(baseInterestRate).div(10000);
-            consoleLog(interestBSXO);
 
             uint BSXODecimals = interestBSXO.mul(10000000000000000); // here we have the the value with accurate number of decimals
             BSXO.mint(investorAddress, BSXODecimals);

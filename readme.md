@@ -108,6 +108,8 @@ Interest accounted from principal
 
 Did not implement the floor - absolutely willing to do it
 
+The way how rounding is done, if your contribution is less than `$0.01` then it sends `$0.00` worth of `$BSXO`
+
 
 ### Next steps: operating system for humanity and rarning income
 
@@ -120,3 +122,4 @@ Skilled and able developer.
 Coding skills are going towards marketing automation 
 
 Passionate about adoption, usability, user experience.
+
