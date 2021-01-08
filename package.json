@@ -1,0 +1,28 @@
+{
+  "name": "assurance-contract",
+  "version": "1.0.0",
+  "description": "Design principles and feature set: https://medium.com/@basexisland/assurance-contract-772fb7eb0b58",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "0.0.12",
+    "@openzeppelin/contracts": "^3.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basexisland/assurance-contract.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/basexisland/assurance-contract/issues"
+  },
+  "homepage": "https://github.com/basexisland/assurance-contract#readme"
+}
