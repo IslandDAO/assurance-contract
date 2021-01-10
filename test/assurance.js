@@ -2,7 +2,7 @@ const { expectThrow, increaseTime, latestTime, toWei, fromWei } = require('./hel
 
 const Assurance = artifacts.require('Assurance')
 const MockAggregator = artifacts.require('MockAggregator')
-const MyERC20 = artifacts.require('MyERC20');
+const IslandToken = artifacts.require('IslandToken');
 
 contract('Assurance contract to buy island and college', async function(accounts) {
 
@@ -17,17 +17,17 @@ contract('Assurance contract to buy island and college', async function(accounts
 
     let assurance;
     let oracle;
-    let BSXO;
+    let islandToken;
 
     beforeEach(async function() {
         oracle = await MockAggregator.new(8, 39145000000, { from: creator });
 
-        BSXO = await MyERC20.new("BaseX operations", "BSXO", { from: creator });
+        islandToken = await IslandToken.new("Island Token", "ISLAND", { from: creator });
 
-        assurance = await Assurance.new(oracle.address, BSXO.address, beneficiary, { from: creator });     
+        assurance = await Assurance.new(oracle.address, islandToken.address, beneficiary, { from: creator });     
         
-        await BSXO.grantRole(web3.utils.keccak256("MINTER_ROLE"), assurance.address, { from: creator });
-        await BSXO.grantRole(web3.utils.keccak256("PAUSER_ROLE"), assurance.address, { from: creator });
+        await islandToken.grantRole(web3.utils.keccak256("MINTER_ROLE"), assurance.address, { from: creator });
+        await islandToken.grantRole(web3.utils.keccak256("PAUSER_ROLE"), assurance.address, { from: creator });
     })
 
     it('Can calculate money invested in ETH', async () => {

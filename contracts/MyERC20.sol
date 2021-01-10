@@ -4,7 +4,7 @@ import "../node_modules/@openzeppelin/contracts/presets/ERC20PresetMinterPauser.
 
 // By placing this `.sol` file in "contracts" it will make it compiled in "artifacts"
 // In that way we can access it in the tests
-contract MyERC20 is ERC20PresetMinterPauser {
+contract IslandToken is ERC20PresetMinterPauser {
     constructor(string memory name, string memory symbol) public ERC20PresetMinterPauser(name, symbol) {
 
     }
