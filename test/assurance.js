@@ -30,6 +30,13 @@ contract('Assurance contract to buy island and college', async function(accounts
         await islandToken.grantRole(web3.utils.keccak256("PAUSER_ROLE"), assurance.address, { from: creator });
     })
 
+    it('Can receive tokens', async () => {
+        await assurance.sendTransaction({ value: toWei("0.05"), from: guy1 });
+
+        let balance = await islandToken.balanceOf.call(guy1);
+        assert.equal(balance.toString(), toWei("0.05"), "Guy 1 should have 0.05 of the Island token as sent 0.05 ETH");
+    });
+
     it('Can calculate money invested in ETH', async () => {
         await assurance.sendTransaction({ value: toWei("0.05"), from: guy1 });
         await assurance.sendTransaction({ value: toWei("0.17"), from: guy2 });

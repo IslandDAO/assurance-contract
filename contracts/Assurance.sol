@@ -13,9 +13,9 @@ contract Assurance is Ownable {
     ERC20PresetMinterPauser public islandToken;
     mapping (address => uint) public balances;
 
-    constructor(address oracleAddress, address BSXOaddress, address payable _beneficiary) public {
+    constructor(address oracleAddress, address islandTokenAddress, address payable _beneficiary) public {
         beneficiary = _beneficiary;
-        islandToken = ERC20PresetMinterPauser(BSXOaddress);
+        islandToken = ERC20PresetMinterPauser(islandTokenAddress);
         oracle = AggregatorInterface(oracleAddress);
     }
 
