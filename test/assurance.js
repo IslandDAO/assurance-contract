@@ -3,6 +3,8 @@ const { expectThrow, increaseTime, latestTime, toWei, fromWei } = require('./hel
 const Assurance = artifacts.require('Assurance')
 const MockAggregator = artifacts.require('MockAggregator')
 const IslandToken = artifacts.require('IslandToken');
+const DAI = artifacts.require('DAI_DUMMY');
+const CryptoKities = artifacts.require('CryptoKities_DUMMY');
 
 contract('Assurance contract to buy island and college', async function(accounts) {
 
