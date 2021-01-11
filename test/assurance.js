@@ -44,11 +44,13 @@ contract('Assurance contract to buy island and college', async function(accounts
 
         await islandToken.approve(assurance.address, toWei("0.04"), { from: guy1 });
 
-        let guyBalance = await web3.eth.getBalance(guy1)
+        let guyBalance = await web3.eth.getBalance(guy1);
 
-        await assurance.withdraw()
+        await assurance.withdraw(toWei("0.03", {from : guy1}));
 
+        let guyBalanceAfter = await web3.eth.getBalance(guy1);
 
+        assert.closeTo(guyBalance , guyBalanceAfter, 0.01E8, "After withdraw should have more amount");
     });
 
 
@@ -61,7 +63,11 @@ contract('Assurance contract to buy island and college', async function(accounts
         assert.equal(balance.toString(), 8611, "0.22 ETH at $391.45 shold be $86.11");
     });
 
-
+    it('Calculate price in WEI correctly', async () => {
+        oracle.updateAnswer(140000000000); // now ETH is at $1400 ATH
+        let balance = await assurance.getUSDValueOfWEI.call(toWei("0.1"));
+        assert.equal(balance.toString(), 14000); // $140 in cents
+    });
 
 
 
