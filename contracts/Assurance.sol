@@ -9,9 +9,13 @@ contract Assurance is Ownable {
     using SafeMath for uint256;
 
     AggregatorInterface public oracle;
-    address payable beneficiary; // MULTISIG
-    ERC20PresetMinterPauser public islandToken;
-    mapping (address => uint) public balances;
+    address payable beneficiary; // MULTISIG. Ensure that there is enough m-of-n signatories and you are one of them to be extra sure 👍 (don't trust, verify)
+    ERC20PresetMinterPauser public islandToken; // On Etherscan read contract and verify that `getRoleMemberCount` for MINTER_ROLE is exactly 1 (only this contract can mint)
+
+
+    event Deposit(address user, uint amount);
+    event Witdrawal(address user, uint amount);
+
 
     constructor(address oracleAddress, address islandTokenAddress, address payable _beneficiary) public {
         beneficiary = _beneficiary;
@@ -21,7 +25,7 @@ contract Assurance is Ownable {
 
     function getUSDValueOfWEI(uint WEI) public view returns (uint) {
         uint price = (uint)(oracle.latestAnswer());
-        return WEI.mul(price).div(1000000000000000000000000); // getting the right decimals, this is how ChainLink represents data
+        return WEI.mul(price).div(1000000000000000000000000); // Getting the right decimals, this is how ChainLink represents thedata
     }
 
     function currentValue() public view returns(uint) {
@@ -38,6 +42,7 @@ contract Assurance is Ownable {
     }
 
     function withdraw() public {
+        // TODO: require tokens approval
         // msg.sender.transfer(balances[msg.sender]);
     }
 
