@@ -19,7 +19,7 @@ contract DAI_DUMMY is ERC20PresetMinterPauser {
 }
 
 // Dummy contract for testing purposes: rescuing NFT721 from the contract
-contract CryptoKitty_DUMMY is ERC721PresetMinterPauserAutoId {
+contract CryptoKitties_DUMMY is ERC721PresetMinterPauserAutoId {
     constructor(string memory name, string memory symbol, string memory baseURI) public ERC721PresetMinterPauserAutoId(name, symbol, baseURI) {
 
     }

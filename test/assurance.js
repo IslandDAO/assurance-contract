@@ -26,18 +26,32 @@ contract('Assurance contract to buy island and college', async function(accounts
 
         islandToken = await IslandToken.new("Island Token", "ISLAND", { from: creator });
 
-        assurance = await Assurance.new(oracle.address, islandToken.address, beneficiary, { from: creator });     
+        assurance = await Assurance.new(oracle.address, islandToken.address, beneficiary, 30 * days, { from: creator });     
         
         await islandToken.grantRole(web3.utils.keccak256("MINTER_ROLE"), assurance.address, { from: creator });
         await islandToken.grantRole(web3.utils.keccak256("PAUSER_ROLE"), assurance.address, { from: creator });
     })
 
-    it('Can receive tokens', async () => {
+    it('Can deposit ETH and mint tokens', async () => {
         await assurance.sendTransaction({ value: toWei("0.05"), from: guy1 });
 
         let balance = await islandToken.balanceOf.call(guy1);
         assert.equal(balance.toString(), toWei("0.05"), "Guy 1 should have 0.05 of the Island token as sent 0.05 ETH");
     });
+
+    it('Can withdraw ETH by burning tokens', async () => {
+        await assurance.sendTransaction({ value: toWei("0.05"), from: guy1 });
+
+        await islandToken.approve(assurance.address, toWei("0.04"), { from: guy1 });
+
+        let guyBalance = await web3.eth.getBalance(guy1)
+
+        await assurance.withdraw()
+
+
+    });
+
+
 
     it('Can calculate money invested in ETH', async () => {
         await assurance.sendTransaction({ value: toWei("0.05"), from: guy1 });
@@ -46,6 +60,11 @@ contract('Assurance contract to buy island and college', async function(accounts
         let balance = await assurance.currentValue.call();
         assert.equal(balance.toString(), 8611, "0.22 ETH at $391.45 shold be $86.11");
     });
+
+
+
+
+
 
     // it('Can generate interest when one guy send ETH', async () => {
     //     await assurance.sendTransaction({ value: toWei("99"), from: guy1 });
