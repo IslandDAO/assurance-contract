@@ -3,8 +3,8 @@ const { expectThrow, increaseTime, latestTime, toWei, fromWei } = require('./hel
 const Assurance = artifacts.require('Assurance')
 const MockAggregator = artifacts.require('MockAggregator')
 const IslandToken = artifacts.require('IslandToken');
-const DAI = artifacts.require('DAI_DUMMY');
-const CryptoKities = artifacts.require('CryptoKities_DUMMY');
+// const DAI = artifacts.require('DAI_DUMMY');
+// const CryptoKitties = artifacts.require('CryptoKitties_DUMMY');
 
 contract('Assurance contract to buy island and college', async function(accounts) {
 
@@ -16,6 +16,7 @@ contract('Assurance contract to buy island and college', async function(accounts
     const beneficiary = accounts[5];
 
     const days = 24 * 60 * 60;
+    const GAS_MARGIN = 0.01 * 1E18; // sometimes we send tx consuming gas, close enough
 
     let assurance;
     let oracle;
@@ -45,15 +46,11 @@ contract('Assurance contract to buy island and college', async function(accounts
         await islandToken.approve(assurance.address, toWei("0.04"), { from: guy1 });
 
         let guyBalance = await web3.eth.getBalance(guy1);
-
-        await assurance.withdraw(toWei("0.03", {from : guy1}));
-
+        await assurance.withdraw(toWei("0.03"), {from : guy1});
         let guyBalanceAfter = await web3.eth.getBalance(guy1);
 
-        assert.closeTo(guyBalance , guyBalanceAfter, 0.01E8, "After withdraw should have more amount");
+        assert.closeTo(parseFloat(fromWei(guyBalance)) + 0.03, parseFloat(fromWei(guyBalanceAfter)), GAS_MARGIN, "After withdraw should have more amount");
     });
-
-
 
     it('Can calculate money invested in ETH', async () => {
         await assurance.sendTransaction({ value: toWei("0.05"), from: guy1 });
@@ -64,9 +61,58 @@ contract('Assurance contract to buy island and college', async function(accounts
     });
 
     it('Calculate price in WEI correctly', async () => {
-        oracle.updateAnswer(140000000000); // now ETH is at $1400 ATH
+        await oracle.updateAnswer(140000000000); // now ETH is at $1400 ATH
         let balance = await assurance.getUSDValueOfWEI.call(toWei("0.1"));
         assert.equal(balance.toString(), 14000); // $140 in cents
+    });
+
+    it('Does not allow to initiate withdrawal initially', async () => {
+        await expectThrow(assurance.initiateWithdrawal(), {from: beneficiary});
+    })
+
+    it('Allows to initiate withdrawal after $1m in deposits', async () => {
+        await assurance.sendTransaction({ value: toWei("99"), from: guy1 });
+        await oracle.updateAnswer(2100000000000); // now ETH is at $21000
+
+        await expectThrow(assurance.initiateWithdrawal({from: guy1 }));
+        await assurance.initiateWithdrawal({from: beneficiary})
+
+        await expectThrow(assurance.initiateWithdrawal({from: beneficiary})); // cannot initiate more than once
+    })
+
+    it('Allows to to finalize after 30 days', async () => {
+        await assurance.sendTransaction({ value: toWei("99"), from: guy2 });
+        await oracle.updateAnswer(2100000000000); // now ETH is at $21000
+
+        await assurance.initiateWithdrawal({from: beneficiary})
+
+        await expectThrow(assurance.finalizeWithdrawal({from: beneficiary})) // too fast
+
+        await increaseTime(30.5 * days);
+
+        let balanceBefore = await web3.eth.getBalance(beneficiary);
+        await assurance.finalizeWithdrawal({from: beneficiary});
+        let balanceAfter = await web3.eth.getBalance(beneficiary);
+        assert.closeTo(parseFloat(balanceBefore.toString()) + parseFloat(toWei("99")), parseFloat(balanceAfter.toString()), GAS_MARGIN, "Beneficiary should have received money (100 ETH from Truffle test runner)");
+    });
+
+    if('Does not allow to finalize when balance goes down but allows to start again', async () => {
+        await assurance.sendTransaction({ value: toWei("99"), from: guy2 });
+        await oracle.updateAnswer(2100000000000); // now ETH is at $21000
+
+        await assurance.initiateWithdrawal({from: beneficiary})
+
+        await increaseTime(30.5 * days);
+
+        await oracle.updateAnswer(900000000000); // now ETH is at $9000 ATH
+
+        let balanceBefore = await web3.eth.getBalance(beneficiary);
+        await assurance.finalizeWithdrawal({from: beneficiary});
+        let balanceAfter = await web3.eth.getBalance(beneficiary);
+        assert.closeTo(parseFloat(balanceBefore.toString()), parseFloat(balanceAfter.toString()), GAS_MARGIN, "Beneficiary should have only 100 from Truffle");
+    
+        let withhdrawalInitiated = await assurance.withhdrawalInitiated.call();
+        assert.equal(withhdrawalInitiated, false, "withhdrawalInitiated should be in `false` state");
     });
 
 

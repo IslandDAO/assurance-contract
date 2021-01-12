@@ -16,6 +16,10 @@ contract DAI_DUMMY is ERC20PresetMinterPauser {
     constructor(string memory name, string memory symbol) public ERC20PresetMinterPauser(name, symbol) {
 
     }
+
+    function dummy() public view returns(string memory) { // Generating a different ABI
+        return "42";
+    }
 }
 
 // Dummy contract for testing purposes: rescuing NFT721 from the contract

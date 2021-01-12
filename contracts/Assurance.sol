@@ -61,8 +61,8 @@ contract Assurance is Ownable {
 
 
     ////////////////////////////////      INITIATING WITHDRAWALS
-    uint initiatedTime;
-    bool withdrawalInitiated;
+    uint public initiatedTime;
+    bool public withdrawalInitiated;
     
     function initiateWithdrawal() public onlyOwner { // We do not want random dudes to initiate withdrawals when a proper island is not found yet
         require(currentValue() > ONE_MILLION_DOLLARS_IN_CENTS, "Funds must be over million dollars");
