@@ -3,8 +3,8 @@ const { expectThrow, increaseTime, latestTime, toWei, fromWei } = require('./hel
 const Assurance = artifacts.require('Assurance')
 const MockAggregator = artifacts.require('MockAggregator')
 const IslandToken = artifacts.require('IslandToken');
-// const DAI = artifacts.require('DAI_DUMMY');
-// const CryptoKitties = artifacts.require('CryptoKitties_DUMMY');
+const DAI = artifacts.require('DAI_DUMMY');
+const CryptoKitties = artifacts.require('CryptoKitties_DUMMY');
 
 contract('Assurance contract to buy island and college', async function(accounts) {
 
@@ -116,6 +116,31 @@ contract('Assurance contract to buy island and college', async function(accounts
     });
 
 
+
+    it('Can rescue ERC20', async () => {
+        dai = await DAI.new("DAI dummy", "DAI", { from: creator });
+        await dai.mint(guy1, toWei("1000"), { from: creator });
+
+        await dai.transfer(assurance.address, toWei("800"), { from: guy1 });
+
+        await assurance.rescueERC20(dai.address, {from: beneficiary});
+
+        let beneficiaryDAIbalance = await dai.balanceOf(beneficiary);
+
+        assert.equal(beneficiaryDAIbalance, toWei("800"), "Beneficiary should have rescued 800 DAI");
+    });
+
+
+    it('Can rescue NFT721', async () => {
+        kitties = await CryptoKitties.new("Crypto Kitties", "CK", "https://genesis.re", { from: creator });
+        await kitties.mint(guy1, {from: creator });
+
+        await kitties.transferFrom(guy1, assurance.address, 0, { from: guy1 });
+
+        await assurance.rescueNFT721(kitties.address, 0, { from: beneficiary });
+        
+        assert.equal(await kitties.ownerOf(0), beneficiary, "beneficiary should be the owner of kitty.");
+    });
 
 
     // it('Can generate interest when one guy send ETH', async () => {

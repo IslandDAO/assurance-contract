@@ -1,21 +1,50 @@
 # Island DAO
 
 
+
+### Tokenomics
+
 1,000,000,000 Total Supply
 
+17% suppliers, contractors, services (during the fundraise)
+
+17% during the build
+
+50% crowdfunding
+
+10% ecosystem development fund
+
+1% Ross Ulbrich legal fund
+
+5% reserve, contingencies, rainy day
 
 
 
-5% reserve, contingencies, rainy day fund
+### Development
+Running tests
+
+`truffle test`
+
+```
+    ✓ Can deposit ETH and mint tokens (63ms)
+    ✓ Can withdraw ETH by burning tokens (139ms)
+    ✓ Can calculate money invested in ETH (114ms)
+    ✓ Calculate price in WEI correctly (50ms)
+    ✓ Does not allow to initiate withdrawal initially
+    ✓ Allows to initiate withdrawal after $1m in deposits (168ms)
+    ✓ Allows to to finalize after 30 days (201ms)
+    ✓ Can rescue ERC20 (209ms)
+    ✓ Can rescue NFT721 (234ms)
+```
 
 
-
+### Verifying on Etherscan
 
 ```
 truffle run verify IslandToken Assurance --network rinkeby
 Verifying IslandToken
-Pass - Verified: https://rinkeby.etherscan.io/address/0x789b6cE5c38366bc26947aaE153A6b44Fbe377C6#contracts
+Pass - Verified: https://rinkeby.etherscan.io/address/0x...#contracts
 Verifying Assurance
-Pass - Verified: https://rinkeby.etherscan.io/address/0xffa86B19110e71d5448e4fD96f8cB6Fb04F4392C#contracts
+Pass - Verified: https://rinkeby.etherscan.io/address/0x...C#contracts
 Successfully verified 2 contract(s).
 ```
