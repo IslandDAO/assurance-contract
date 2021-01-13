@@ -9,6 +9,20 @@ contract IslandToken is ERC20PresetMinterPauser {
     constructor(string memory name, string memory symbol) public ERC20PresetMinterPauser(name, symbol) {
 
     }
+
+    function dummy() public view returns(string memory) { // Generating a different ABI
+        return "Island";
+    }
+}
+
+contract StakedToken is ERC20PresetMinterPauser {
+    constructor(string memory name, string memory symbol) public ERC20PresetMinterPauser(name, symbol) {
+
+    }
+
+    function dummy() public view returns(string memory) { // Generating a different ABI
+        return "Staked";
+    }
 }
 
 // Dummy contract for testing purposes: rescuing ERC20 from the contract

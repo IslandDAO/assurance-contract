@@ -13,11 +13,14 @@ contract Assurance is Ownable {
     AggregatorInterface public oracle;
     address payable multisig; // MULTISIG. Ensure that there is enough m-of-n signatories and you are one of them to be extra sure 👍 (don't trust, verify)
     ERC20PresetMinterPauser public islandToken; // On Etherscan read contract and verify that `getRoleMemberCount` for MINTER_ROLE is exactly 1 (only this contract can mint)
+    ERC20PresetMinterPauser public stakedToken; // Inspired by PieDAO and Badger: upon depositing funds receiving tokens that are staked (this is to allow composability)
     uint ONE_MILLION_DOLLARS_IN_CENTS = 100000000; // We use cents value. Related to how Chainlink oracle return ETH / USD data
     uint TIMELOCK_DELAY;
 
     event Deposit(address user, uint amount);
     event Withdrawal(address user, uint amount);
+    event Stake(address user, uint amount);
+    event Unstake(address user, uint amount);
 
     constructor(address oracleAddress, address islandTokenAddress, address payable multisigAddress, uint timelock) public {
         multisig = multisigAddress;
@@ -45,6 +48,17 @@ contract Assurance is Ownable {
         emit Withdrawal(msg.sender, amount);
     }
 
+    function stake(uint amount) public {
+        islandToken.transferFrom(msg.sender, address(this), amount);
+        stakedToken.mint(msg.sender, amount);
+        emit Stake(msg.sender, amount);
+    }
+
+    function unstake(uint amount) public {
+        stakedToken.burnFrom(msg.sender, amount);
+        islandToken.transfer(msg.sender, amount);
+        emit Unstake(msg.sender, amount);
+    }
 
 
 
