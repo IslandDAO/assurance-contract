@@ -15,7 +15,10 @@
         $scope.check = async function() {
           console.log("check", $scope.address);
 
-          let balance = await checkBalance($scope.address);
+          let balanceIsland = await checkBalanceIsland($scope.address);
+          let balanceStaked = await checkBalanceStaked($scope.address);
+          let allowanceIsland = await checkBalanceIsland($scope.address);
+          let allowanceIsland = await allowanceBalanceIsland($scope.address);
          
       
           
@@ -28,17 +31,27 @@
         
 
 
-        async function checkAllowance(address) {
+        async function checkAllowanceIsland(address) {
           let allowance = await island.allowance($scope.address, AssuranceAddress);
           return allowance;
         }
 
-        async function checkBalance(address) {
+        async function checkBalanceIsland(address) {
           let balance = await island.balanceOf($scope.address);
           return balance;
         }
 
 
+
+        async function checkAllowanceStaked(address) {
+          let allowance = await staked.allowance($scope.address, AssuranceAddress);
+          return allowance;
+        }
+
+        async function checkBalanceStaked(address) {
+          let balance = await staked.balanceOf($scope.address);
+          return balance;
+        }
 
 
 
@@ -52,21 +65,43 @@
 
     <button ng-click="enable()">connect metamask</button>
 
+    <br>
+    <br>
+
     <input ng-model="address" placeholder="address"></input>
     <button ng-click="check()">check</button>
     <h1>{{ balance }}</h1>
 
 
-    <p>Allowance to the</p>
 
 
-    <h3>Stake to earn profits</h3>
+    <h3>Deposit</h3>
 
 
-    <h3>Unstake to move around</h3>
+    <h3>Withdraw</h3>
+    <p>{{ balance }}</p>
+    <input ng-model="balanceNumber" type="number">
+    <button ng-click="withdraw()">withdraw</button>
 
 
-    <h3>Burn to redeem</h3>
+
+
+    <h3>Stake</h3>
+    <p>{{ staked }}</p>
+    <input ng-model="stakeNumber" type="number">
+    <button ng-click="stake()">stake</button>
+
+
+    <h3>Unstake</h3>
+    <input ng-model="unstakeNumber" type="number">
+    <button ng-click="unstake()">unstake</button>
+
+
+
+
+
+    <p><code>islanddao.eth</code></p>
+
 
   </body>
 

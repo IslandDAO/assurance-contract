@@ -17,13 +17,14 @@ module.exports = async function (deployer) {
     // Price Oracle ETH / USD: https://docs.chain.link/docs/ethereum-addresses#rinkeby
     const oracleAddress = "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e";
 
-    await deployer.deploy(Assurance, oracleAddress, islandToken.address, stakedTokens.address, beneficiary, 30 * days);
+    await deployer.deploy(Assurance, oracleAddress, islandToken.address, stakedToken.address, beneficiary, 30 * days);
 
     const assurance = await Assurance.deployed();
 
     await islandToken.grantRole(MINTER_ROLE, assurance.address);
     await stakedToken.grantRole(MINTER_ROLE, assurance.address);
 
-    await islandToken.renounceRole(MINTER_ROLE, deployer);
-    await stakedToken.renounceRole(MINTER_ROLE, deployer);
+    // console.log(deployer);
+    // await islandToken.renounceRole(MINTER_ROLE, deployer.address);
+    // await stakedToken.renounceRole(MINTER_ROLE, deployer.address);
 };

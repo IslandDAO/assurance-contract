@@ -1,5 +1,4 @@
 pragma solidity >=0.6.0;
-
 import "../node_modules/@openzeppelin/contracts/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -22,9 +21,10 @@ contract Assurance is Ownable {
     event Stake(address user, uint amount);
     event Unstake(address user, uint amount);
 
-    constructor(address oracleAddress, address islandTokenAddress, address payable multisigAddress, uint timelock) public {
+    constructor(address oracleAddress, address islandTokenAddress, address stakedTokenAddress, address payable multisigAddress, uint timelock) public {
         multisig = multisigAddress;
         islandToken = ERC20PresetMinterPauser(islandTokenAddress);
+        stakedToken = ERC20PresetMinterPauser(stakedTokenAddress);
         oracle = AggregatorInterface(oracleAddress);
         TIMELOCK_DELAY = timelock;
         transferOwnership(multisig); // in that way `onlyOwner` function will be called only by the multisig 
