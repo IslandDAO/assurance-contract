@@ -6,13 +6,18 @@
 
 1,000,000,000 Total Supply
 
+
+
+
 17% suppliers, contractors, services (during the fundraise)
 
 17% during the build
 
-50% crowdfunding
+40% community crowdfunding
 
-10% ecosystem development fund
+5% ecosystem development fund
+
+5% airdrop
 
 1% Ross Ulbrich legal fund
 
@@ -40,11 +45,4 @@ Running tests
 
 ### Verifying on Etherscan
 
-```
-truffle run verify IslandToken Assurance --network rinkeby
-Verifying IslandToken
-Pass - Verified: https://rinkeby.etherscan.io/address/0x...#contracts
-Verifying Assurance
-Pass - Verified: https://rinkeby.etherscan.io/address/0x...C#contracts
-Successfully verified 2 contract(s).
-```
+`truffle run verify IslandToken StakedToken Assurance --network rinkeby`

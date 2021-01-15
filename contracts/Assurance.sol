@@ -10,7 +10,7 @@ contract Assurance is Ownable {
     using SafeMath for uint256;
 
     AggregatorInterface public oracle;
-    address payable multisig; // MULTISIG. Ensure that there is enough m-of-n signatories and you are one of them to be extra sure 👍 (don't trust, verify)
+    address payable multisig; // MULTISIG. Ensure that there is enough m-of-n signatories and you are one of them to be extra sure (don't trust, verify)
     ERC20PresetMinterPauser public islandToken; // On Etherscan read contract and verify that `getRoleMemberCount` for MINTER_ROLE is exactly 1 (only this contract can mint)
     ERC20PresetMinterPauser public stakedToken; // Inspired by PieDAO and Badger: upon depositing funds receiving tokens that are staked (this is to allow composability)
     uint ONE_MILLION_DOLLARS_IN_CENTS = 100000000; // We use cents value. Related to how Chainlink oracle return ETH / USD data
