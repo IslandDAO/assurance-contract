@@ -1,0 +1,16 @@
+.column {
+float: left;
+width: 300px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.action {
+    border: 1px solid black;
+    height: 150px;;
+}

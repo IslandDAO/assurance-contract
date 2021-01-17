@@ -5,51 +5,73 @@
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.0.17/dist/ethers.umd.js" type="text/javascript"></script>
     <script src="constants.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="styles.css">
     <script>
 
 
     </script>
+
+    <style>
+
+    </style>
   </head>
   <body ng-app="app" ng-controller="ctrl">
 
 
     <button ng-click="enable()">connect metamask</button>
-
     <br>
     <br>
 
-    <input ng-model="address" placeholder="address"></input>
-    <button ng-click="check()">check</button>
-    <h1>{{ balance }}</h1>
+    <input ng-model="address" placeholder="address"></input><button ng-click="check()">check</button>
 
 
 
-
-    <h3>Deposit</h3>
-    <input ng-model="balance" type="number">
-    <button ng-click="deposit()">deposit</button>
-
-
-    <h3>Withdraw</h3>
-    <p>{{ balance }}</p>
-    <input ng-model="balance" type="number">
-    <button ng-click="withdraw()">withdraw</button>
-
+    <div class="row">
+      <div class="column">
+        
+        <div class="action">
+          <h3>Deposit ETH</h3>
+          <p>Your ETH balance: {{ balance }}</p>
+          <input ng-model="balance" type="number">
+          <button ng-click="deposit()">deposit</button>
+        </div>
 
 
+        <div class="action">
+          <h3>Stake ISLAND</h3>
+          <p>Your ISLAND balance: {{ balanceIsland }}</p>
+          <input ng-model="islandStake" type="number">
+          <button ng-click="stake()">stake</button>
+        </div>
 
-    <h3>Stake</h3>
-    <p>{{ staked }}</p>
-    <input ng-model="stakeNumber" type="number">
-    <button ng-click="stake()">stake</button>
+        <div class="action">
 
+        </div>
 
-    <h3>Unstake</h3>
-    <input ng-model="unstakeNumber" type="number">
-    <button ng-click="unstake()">unstake</button>
+      </div>
 
+      <div class="column">
+        
+        <div class="action">
 
+        </div>
 
+        <div class="action">
+          <h3>Withdraw ISLAND</h3>
+          <p>Your ISLAND balance: {{ balanceIsland }}</p>
+          <input ng-model="islandWithdraw" type="number">
+          <button ng-click="withdraw()">withdraw</button>
+        </div>
+    
+        <div class="action">
+          <h3>Unstake STAKED</h3>
+          <p>Your STAKED balance: {{ balanceStaked }}</p>
+          <input ng-model="stakeUnstake" type="number">
+          <button ng-click="unstake()">unstake</button>
+        </div>
+
+      </div>
+    </div>
 
 
     <p><code>islanddao.eth</code></p>
@@ -57,10 +79,11 @@
 
   </body>
 
-<script>
+  <script>
 
 
 
   </script>
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
 </html>

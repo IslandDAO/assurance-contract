@@ -17,18 +17,14 @@ app.controller("ctrl", function($scope, $q) {
         let allowanceIsland = await checkAllowanceIsland($scope.address);
         let allowanceStaked = await checkAllowanceStaked($scope.address);
         
-        console.log(balanceIsland.toString(), balanceStaked.toString(), allowanceIsland.toString(), allowanceStaked.toString());
+        console.log(balance, balanceIsland.toString(), balanceStaked.toString(), allowanceIsland.toString(), allowanceStaked.toString());
 
-        $scope.balance = balance.toString();
-        $scope.balanceIsland = balanceIsland.toString();
-        $scope.balanceStakes = balanceStaked.toString();
-        $scope.allowanceIsland = allowanceIsland.toString();
-        $scope.allowanceStaked - allowanceStaked.toString();
+        $scope.balance = ethers.utils.formatEther(balance.toString());
+        $scope.balanceIsland = ethers.utils.formatEther(balanceIsland.toString());
+        $scope.balanceStaked = ethers.utils.formatEther(balanceStaked.toString());
+        $scope.allowanceIsland = ethers.utils.formatEther(allowanceIsland.toString());
+        $scope.allowanceStaked - ethers.utils.formatEther(allowanceStaked.toString());
 
-        
-        // $scope.balance = ethers.utils.formatEther(balance.toString());
-
-        console.log($scope.balance);
         $scope.$apply();
     }
 
@@ -51,8 +47,6 @@ app.controller("ctrl", function($scope, $q) {
         let balance = await island.balanceOf($scope.address);
         return balance;
     }
-
-
 
     async function checkAllowanceStaked(address) {
         let allowance = await staked.allowance($scope.address, AssuranceAddress);
