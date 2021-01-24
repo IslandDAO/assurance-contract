@@ -10,29 +10,23 @@ contract Assurance is Ownable {
     using SafeMath for uint256;
 
     AggregatorInterface public oracle;
-    address payable multisig; // MULTISIG. Ensure that there is enough m-of-n signatories and you are one of them to be extra sure (don't trust, verify)
+    address payable public multisig; // MULTISIG. Ensure that there is enough m-of-n signatories and you are one of them to be extra sure (don't trust, verify)
     ERC20PresetMinterPauser public islandToken; // On Etherscan read contract and verify that `getRoleMemberCount` for MINTER_ROLE is exactly 1 (only this contract can mint)
-    ERC20PresetMinterPauser public stakedToken; // Inspired by PieDAO and Badger: upon depositing funds receiving tokens that are staked (this is to allow composability)
-    uint ONE_MILLION_DOLLARS_IN_CENTS = 100000000; // We use cents value. Related to how Chainlink oracle return ETH / USD data
-    uint TIMELOCK_DELAY;
+    uint public ONE_MILLION_DOLLARS_IN_CENTS = 100000000; // We use cents value. Related to how Chainlink oracle return ETH / USD data
+    uint public TIMELOCK_DELAY; // Ideally hardcoded but in order to test passing as a constructor parameter
 
     event Deposit(address user, uint amount);
     event Withdrawal(address user, uint amount);
-    event Stake(address user, uint amount);
-    event Unstake(address user, uint amount);
 
-    constructor(address oracleAddress, address islandTokenAddress, address stakedTokenAddress, address payable multisigAddress, uint timelock) public {
+    constructor(address oracleAddress, address islandTokenAddress, address payable multisigAddress, uint timelockDelay) public {
         multisig = multisigAddress;
         islandToken = ERC20PresetMinterPauser(islandTokenAddress);
-        stakedToken = ERC20PresetMinterPauser(stakedTokenAddress);
         oracle = AggregatorInterface(oracleAddress);
-        TIMELOCK_DELAY = timelock;
+        TIMELOCK_DELAY = timelockDelay;
         transferOwnership(multisig); // in that way `onlyOwner` function will be called only by the multisig 
     }
 
-
-
-    ////////////////////////////////      DEPOSITS AND WITHDRAWALS
+    //////////////////////////////// DEPOSITS AND WITHDRAWALS
     receive() external payable { // Fallback function, sending directly to the contract
         deposit();
     }
@@ -48,21 +42,7 @@ contract Assurance is Ownable {
         emit Withdrawal(msg.sender, amount);
     }
 
-    function stake(uint amount) public {
-        islandToken.transferFrom(msg.sender, address(this), amount);
-        stakedToken.mint(msg.sender, amount);
-        emit Stake(msg.sender, amount);
-    }
-
-    function unstake(uint amount) public {
-        stakedToken.burnFrom(msg.sender, amount);
-        islandToken.transfer(msg.sender, amount);
-        emit Unstake(msg.sender, amount);
-    }
-
-
-
-    ////////////////////////////////      CHECKING HOW MUCH MONEY WE HAVE
+    //////////////////////////////// CHECKING HOW MUCH MONEY WE HAVE
     function getUSDValueOfWEI(uint WEI) public view returns (uint) {
         uint price = (uint)(oracle.latestAnswer());
         return WEI.mul(price).div(1000000000000000000000000); // Getting the right decimals, this is how ChainLink represents thedata
@@ -72,9 +52,7 @@ contract Assurance is Ownable {
         return getUSDValueOfWEI(address(this).balance);
     }
 
-
-
-    ////////////////////////////////      INITIATING WITHDRAWALS
+    //////////////////////////////// INITIATING WITHDRAWALS
     uint public initiatedTime;
     bool public withdrawalInitiated;
     
@@ -94,9 +72,7 @@ contract Assurance is Ownable {
             withdrawalInitiated = false;
         }
     }
-
-
-
+    
     //////////////////////////////// ACCEPTING ERC20 and NFT721. PROCESSING THEM MANUALLY
     function rescueERC20(address tokenAddress) public {
         IERC20 tokenContract = ERC20(tokenAddress);

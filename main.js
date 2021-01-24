@@ -73,6 +73,6 @@ async function init() {
     island    = new ethers.Contract(IslandAddress,    IslandABI,    signer);
     staked    = new ethers.Contract(StakedAddress,    StakedABI,    signer);
 
-  }
+}
 
   init();
