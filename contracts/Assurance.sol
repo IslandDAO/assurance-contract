@@ -12,15 +12,19 @@ contract Assurance is Ownable {
     AggregatorInterface public oracle;
     address payable public multisig; // MULTISIG. Ensure that there is enough m-of-n signatories and you are one of them to be extra sure (don't trust, verify)
     ERC20PresetMinterPauser public islandToken; // On Etherscan read contract and verify that `getRoleMemberCount` for MINTER_ROLE is exactly 1 (only this contract can mint)
+    ERC20PresetMinterPauser public stakedToken; // Staked version so that it is easier to find in your wallet ERC20 balances
     uint public ONE_MILLION_DOLLARS_IN_CENTS = 100000000; // We use cents value. Related to how Chainlink oracle return ETH / USD data
     uint public TIMELOCK_DELAY; // Ideally hardcoded but in order to test passing as a constructor parameter
 
     event Deposit(address user, uint amount);
     event Withdrawal(address user, uint amount);
+    event Stake(address user, uint amount);
+    event Unstake(address user, uint amount);
 
-    constructor(address oracleAddress, address islandTokenAddress, address payable multisigAddress, uint timelockDelay) public {
+    constructor(address oracleAddress, address islandTokenAddress, address stakedTokenAddress, address payable multisigAddress, uint timelockDelay) public {
         multisig = multisigAddress;
         islandToken = ERC20PresetMinterPauser(islandTokenAddress);
+        stakedToken = ERC20PresetMinterPauser(stakedTokenAddress);
         oracle = AggregatorInterface(oracleAddress);
         TIMELOCK_DELAY = timelockDelay;
         transferOwnership(multisig); // in that way `onlyOwner` function will be called only by the multisig 
@@ -40,6 +44,18 @@ contract Assurance is Ownable {
         islandToken.burnFrom(msg.sender, amount);
         msg.sender.transfer(amount);
         emit Withdrawal(msg.sender, amount);
+    }
+
+    function stake(uint amount) public {
+        islandToken.transferFrom(msg.sender, address(this), amount);
+        stakedToken.mint(msg.sender, amount);
+        emit Stake(msg.sender, amount);
+    }
+
+    function unstake(uint amount) public {
+        stakedToken.burnFrom(msg.sender, amount);
+        islandToken.transfer(msg.sender, amount);
+        emit Unstake(msg.sender, amount);
     }
 
     //////////////////////////////// CHECKING HOW MUCH MONEY WE HAVE
