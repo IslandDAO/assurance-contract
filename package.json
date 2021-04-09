@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "3.4.1",
-    "@truffle/hdwallet-provider": "1.2.4"
+    "@truffle/hdwallet-provider": "1.0.40"
   },
   "devDependencies": {
     "truffle-plugin-verify": "^0.5.4"

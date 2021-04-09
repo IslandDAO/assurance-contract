@@ -44,7 +44,7 @@ module.exports = {
   },
 
   plugins: [
-    'truffle-plugin-verify'
+    'truffle-plugin-verify' // truffle run verify NetworkStateGenesis@0xafffa1ef6aefde95ac257274079a012d37584230 --network rinkeby --debug
   ],
 
   api_keys: {
