@@ -76,8 +76,7 @@ contract NetworkStateGenesis is ERC721PresetMinterPauserAutoId {
     }
 
     //////////////////////////////// MESSAGES
-    // As you become the citizen of the Network State Genesis
-    // This is the easiest way to voice your thoughts
+    // On-chain interface for communication
     // Naturally, there will be off-chain solutions as well
 
     event MessagePosted(string IPFShash);
