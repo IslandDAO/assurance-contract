@@ -4,9 +4,9 @@ import "../node_modules/@openzeppelin/contracts/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "../node_modules/@openzeppelin/contracts/presets/ERC721PresetMinterPauserAutoId.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract NetworkStateGenesis is ERC721PresetMinterPauserAutoId {
+contract NetworkStateGenesis is ERC721 {
     using SafeMath for uint256;
 
     string public GENESIS = "Will be populated";
@@ -24,14 +24,18 @@ contract NetworkStateGenesis is ERC721PresetMinterPauserAutoId {
     address public WBTCaddress; // On mainnet: 0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599
     IERC20 public WBTC;
 
+    // Until `cutoffTimestamp` all have the same price. Later on, the 0.1% increase kicks in.
+    uint256 public cutoffTimestamp; // 1625443200 ---> 2021-07-05T00:00:00.000Z
+
     address payable public multisig; // Ensure that there is enough m-of-n signatories and you are one of them to be extra sure (don't trust, verify)
 
-    // "Network State Genesis", "NSG", "QmbtWkKnstd3Co3rWcD7woYZAKxk7yyzmf3DcGTM5fBc2N", 0x85A363699C6864248a6FfCA66e4a1A5cCf9f5567
-    constructor(string memory name, string memory symbol, string memory baseURI, address payable multisigAddress, address _WBTCaddress) ERC721PresetMinterPauserAutoId(name, symbol, baseURI) public {
-        multisig = multisigAddress;
-
+    // "Network State Genesis", "NSG", 0x85A363699C6864248a6FfCA66e4a1A5cCf9f5567
+    constructor(string memory name, string memory symbol, address payable _multisig, address _WBTCaddress, uint _cutoffTimestamp) ERC721(name, symbol) public {
+        multisig = _multisig;
+        cutoffTimestamp = _cutoffTimestamp;
         WBTCaddress = _WBTCaddress;
         WBTC = IERC20(WBTCaddress);
+        _setBaseURI("https://genesis.re/passports/");
     }
 
     //////////////////////////////// 
@@ -40,9 +44,9 @@ contract NetworkStateGenesis is ERC721PresetMinterPauserAutoId {
     }
 
     // ALWAYS FREE (only a gas fee) and available to everyone
-    // It pays off to be early
     // The `registrationTime` will be used to calculate the reward in the future
-    // TODO: fetch signature (off-chain) and store on IPFS to reduce friction and then cross-check with proof of humanity
+    // NOTE: fetch signature (off-chain) and store on IPFS to reduce friction
+    // NOTE: cross-check with proof of humanity to prevent sybil attack
     function freeClaim() public {
         require(registrationTime[msg.sender] == 0, "Address already registered");
         registrationTime[msg.sender] = now;
@@ -61,7 +65,9 @@ contract NetworkStateGenesis is ERC721PresetMinterPauserAutoId {
         emit Purchase(msg.sender, serialNumber, currentPrice, false);
         serialNumber++;
 
-        currentPrice = currentPrice.mul(multiplier).div(divisor); // * 11 / 10
+        if (now > cutoffTimestamp) {
+            currentPrice = currentPrice.mul(multiplier).div(divisor); // mul(1001).div(1000) ---> increase by 0.1%
+        }
     }
 
     // This is inspired by Hackers Congress Paralelní Polis: final ticket available for 1 BTC
